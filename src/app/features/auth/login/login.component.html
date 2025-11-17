@@ -1,0 +1,102 @@
+<div class="min-h-screen w-full relative overflow-hidden bg-white">
+  <!-- Background Image -->
+  <div class="absolute inset-0 w-full h-full">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/3e0c588d21d53dbf170a0026953eb889a6942f6c?width=3200"
+      alt="Interior background"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Sign In Form Card -->
+  <div
+    class="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-0 md:justify-end md:pr-16 lg:pr-32"
+  >
+    <div
+      class="w-full max-w-[326px] md:max-w-[539px] bg-white/75 backdrop-blur-sm rounded-[40px] p-6 md:p-11 shadow-lg"
+    >
+      <!-- Header -->
+      <div class="flex justify-center items-center mb-6 md:mb-8">
+        <div>
+          <h2 class="font-bold md:text-2xl text-black">
+            Welcome to
+            <span class="font-semibold text-primary">Merchant-POS</span>
+          </h2>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <!--   <h2
+        class="text-[40px] md:text-[55px] font-medium leading-none mb-12 md:mb-16"
+      >
+        Sign in
+      </h2> -->
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Email/Username Input -->
+        <app-form-input
+          matInput
+          required
+          formControlName="email"
+          class="form-field"
+          label="Enter your email address"
+          type="text"
+          placeholder="email address"
+          borderColor="border-google-blue"
+        >
+          <div
+            *ngIf="
+              loginForm.get('email')?.invalid &&
+              (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+            "
+          >
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')"
+              >Email is required</mat-error
+            >
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
+              >Invalid email format</mat-error
+            >
+          </div>
+        </app-form-input>
+
+        <!-- Password Input -->
+        <app-form-input
+          matInput
+          required
+          formControlName="password"
+          label="Enter your Password"
+          type="password"
+          class="form-field"
+          placeholder="Password"
+          borderColor="border-input-gray"
+          marginBottom="mb-4 md:mb-6"
+        >
+          <div
+            *ngIf="
+              loginForm.get('password')?.invalid &&
+              (loginForm.get('password')?.dirty ||
+                loginForm.get('password')?.touched)
+            "
+          >
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+              >Password is required</mat-error
+            >
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')"
+              >Password should be at least 6 characters long</mat-error
+            >
+          </div>
+        </app-form-input>
+
+        <!-- Sign In Button -->
+        <div class="flex justify-end">
+          <button
+            type="submit"
+            class="w-full md:w-[236px] py-4 bg-primary hover:bg-primary/90 text-white text-base font-medium rounded-lg shadow-primary transition-colors"
+          >
+            Sign in
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
