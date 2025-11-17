@@ -23,7 +23,3 @@ The system is designed as a **frontend MVP** for interview and learning purposes
 - **SCSS**
 - **Mock APIs** (JSON Server / Postman Mock / Static data)
 - **Event-driven UI updates** using Subjects
-
----
-
-## 📂 Project Structure
