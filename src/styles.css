@@ -4,8 +4,25 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* theme(...) is resolved by Tailwind at build time */
+    --color-primary: theme("colors.primary.500");
+    --color-on-primary: theme("colors.white");
+    --bg-default: theme("colors.gray.50");
+  }
+
   body {
     font-family: "Cairo", sans-serif;
+  }
+
+  /* global overrides for Material components */
+  .mat-toolbar,
+  .mat-app-bar {
+    background: var(--color-primary) !important;
+    color: var(--color-on-primary) !important;
+  }
+  .mat-card {
+    background: color-mix(in srgb, var(--bg-default) 90%, white); /* optional */
   }
 }
 
@@ -30,6 +47,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f5f7fa;
 }
 
 mat-sidenav-container,
@@ -43,9 +61,4 @@ mat-sidenav {
   display: flex;
   flex-direction: column;
   width: 256px;
-  background-color: red;
-}
-
-mat-sidenav-container {
-  background-color: green;
 }
