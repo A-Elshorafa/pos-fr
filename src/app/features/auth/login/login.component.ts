@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private imageLoader: ImageLoaderService
+    private imageLoader: ImageLoaderService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log("Login form submitted");
+      this.router.navigate(["/dashboard"]);
     } else {
       return;
     }
