@@ -1,1 +1,123 @@
-<p>settings works!</p>
+<div class="space-y-8">
+  <!-- Page Header -->
+  <div>
+    <h1 class="text-h1 text-dark-primary font-bold">Settings</h1>
+    <p class="text-body text-gray-600 mt-2">
+      Manage your merchant account and preferences
+    </p>
+  </div>
+
+  <!-- Account Settings -->
+  <app-card padding="md" shadow>
+    <h2 class="text-h2 text-dark-primary font-semibold mb-6">
+      Account Information
+    </h2>
+    <div class="space-y-4">
+      <div>
+        <label class="text-label text-dark-primary font-medium mb-2 block"
+          >Merchant Name</label
+        >
+        <input
+          type="text"
+          placeholder="Your merchant name"
+          class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+        />
+      </div>
+      <div>
+        <label class="text-label text-dark-primary font-medium mb-2 block"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          placeholder="your@email.com"
+          class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+        />
+      </div>
+      <div>
+        <label class="text-label text-dark-primary font-medium mb-2 block"
+          >Phone Number</label
+        >
+        <input
+          type="tel"
+          placeholder="+966 50 0000000"
+          class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+        />
+      </div>
+      <div class="pt-4">
+        <button
+          class="h-11 px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary-hover transition-colors"
+        >
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </app-card>
+
+  <!-- Security Settings -->
+  <app-card padding="md" shadow>
+    <h2 class="text-h2 text-dark-primary font-semibold mb-6">Security</h2>
+    <div class="space-y-4">
+      <button
+        class="w-full text-left px-4 py-3 hover:bg-light-bg rounded-lg transition-colors"
+      >
+        <div class="flex justify-between items-center">
+          <span class="text-body font-medium text-dark-primary"
+            >Change Password</span
+          >
+          <svg
+            class="w-5 h-5 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19l-7-7 7-7m0 0l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </button>
+      <button
+        class="w-full text-left px-4 py-3 hover:bg-light-bg rounded-lg transition-colors border-t border-border-gray"
+      >
+        <div class="flex justify-between items-center">
+          <span class="text-body font-medium text-dark-primary"
+            >Two-Factor Authentication</span
+          >
+          <svg
+            class="w-5 h-5 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19l-7-7 7-7m0 0l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </app-card>
+
+  <!-- Preferences -->
+  <app-card padding="md" shadow>
+    <h2 class="text-h2 text-dark-primary font-semibold mb-6">Preferences</h2>
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-body text-dark-primary">Email Notifications</span>
+        <input type="checkbox" class="w-5 h-5 rounded" checked />
+      </div>
+      <div
+        class="flex items-center justify-between border-t border-border-gray pt-4"
+      >
+        <span class="text-body text-dark-primary">SMS Alerts</span>
+        <input type="checkbox" class="w-5 h-5 rounded" checked />
+      </div>
+    </div>
+  </app-card>
+</div>
