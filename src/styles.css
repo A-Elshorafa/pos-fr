@@ -31,3 +31,21 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+mat-sidenav-container,
+mat-sidenav,
+mat-sidenav-content {
+  height: 100vh;
+}
+
+/* ensure mat-sidenav behaves as a column flex container */
+mat-sidenav {
+  display: flex;
+  flex-direction: column;
+  width: 256px;
+  background-color: red;
+}
+
+mat-sidenav-container {
+  background-color: green;
+}
