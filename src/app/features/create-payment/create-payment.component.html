@@ -1,1 +1,112 @@
-<p>createpayment works!</p>
+<div class="space-y-8">
+  <!-- Page Header -->
+  <div>
+    <h1 class="text-h1 text-dark-primary font-bold">Create Payment</h1>
+    <p class="text-body text-gray-600 mt-2">Process a new transaction</p>
+  </div>
+
+  <!-- Form Card -->
+  <div class="flex justify-center">
+    <app-card padding="lg" shadow class="w-full max-w-md">
+      <form (ngSubmit)="onCreatePayment()" class="space-y-6">
+        <!-- POS Device Selection -->
+        <div>
+          <label class="text-label text-dark-primary font-medium mb-2 block"
+            >Select POS Device</label
+          >
+          <select
+            [(ngModel)]="posDevice"
+            name="posDevice"
+            class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white text-dark-primary"
+            required
+          >
+            <option value="">Choose a device...</option>
+            <option value="POS-001">POS Terminal 1 (Online)</option>
+            <option value="POS-002">POS Terminal 2 (Online)</option>
+            <option value="POS-003">POS Terminal 3 (Offline)</option>
+            <option value="POS-004">POS Terminal 4 (Online)</option>
+          </select>
+        </div>
+
+        <!-- Amount Input -->
+        <div>
+          <label class="text-label text-dark-primary font-medium mb-2 block"
+            >Amount (SAR)</label
+          >
+          <div class="relative">
+            <span
+              class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-medium"
+              >SAR</span
+            >
+            <input
+              type="number"
+              [(ngModel)]="amount"
+              name="amount"
+              placeholder="0.00"
+              class="w-full h-11 px-10 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white text-dark-primary"
+              step="0.01"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Description Input -->
+        <div>
+          <label class="text-label text-dark-primary font-medium mb-2 block"
+            >Description (Optional)</label
+          >
+          <textarea
+            [(ngModel)]="description"
+            name="description"
+            placeholder="Enter payment description..."
+            rows="3"
+            class="w-full px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white text-dark-primary placeholder-gray-400"
+          ></textarea>
+        </div>
+
+        <!-- Create Button -->
+        <button
+          type="submit"
+          class="w-full h-11 bg-primary text-white font-medium rounded-button hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Create Payment
+        </button>
+      </form>
+    </app-card>
+  </div>
+
+  <!-- Success Modal -->
+  <div
+    *ngIf="showSuccessModal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <app-card padding="lg" shadow class="w-full max-w-sm">
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <svg
+            class="w-16 h-16 text-success"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+            />
+          </svg>
+        </div>
+        <h2 class="text-h2 text-dark-primary font-bold mb-2">
+          Payment Created Successfully!
+        </h2>
+        <p class="text-body text-gray-600 mb-2">Reference ID:</p>
+        <p class="text-lg font-bold text-primary mb-6">
+          TXN-{{ getRandomTxnId() }}
+        </p>
+        <button
+          (click)="closeSuccessModal()"
+          class="w-full h-11 bg-primary text-white font-medium rounded-button hover:bg-primary-hover transition-colors"
+        >
+          View in Transactions
+        </button>
+      </div>
+    </app-card>
+  </div>
+</div>
