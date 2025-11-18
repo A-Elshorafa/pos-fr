@@ -1,1 +1,151 @@
-<p>transactions works!</p>
+<div class="space-y-8">
+  <!-- Page Header -->
+  <div>
+    <h1 class="text-h1 text-dark-primary font-bold">Transactions History</h1>
+    <p class="text-body text-gray-600 mt-2">
+      View and manage all your transactions
+    </p>
+  </div>
+
+  <!-- Filters Row -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div>
+      <label class="text-label text-dark-primary font-medium mb-2 block"
+        >Date Range</label
+      >
+      <input
+        type="date"
+        class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-dark-primary"
+      />
+    </div>
+    <div>
+      <label class="text-label text-dark-primary font-medium mb-2 block"
+        >Status</label
+      >
+      <select
+        class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+      >
+        <option>All Status</option>
+        <option>Success</option>
+        <option>Failed</option>
+        <option>Pending</option>
+      </select>
+    </div>
+    <div>
+      <label class="text-label text-dark-primary font-medium mb-2 block"
+        >POS Device</label
+      >
+      <select
+        class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+      >
+        <option>All Devices</option>
+        <option>POS-001</option>
+        <option>POS-002</option>
+        <option>POS-003</option>
+      </select>
+    </div>
+    <div>
+      <label class="text-label text-dark-primary font-medium mb-2 block"
+        >Search</label
+      >
+      <input
+        type="text"
+        placeholder="Transaction ID..."
+        class="w-full h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+      />
+    </div>
+  </div>
+
+  <!-- Transactions Table -->
+  <app-card padding="md" shadow>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-border-gray bg-table-header">
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Txn ID
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Amount
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              POS
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Status
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Type
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Date
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="border-b border-border-gray hover:bg-table-even transition-colors"
+            *ngFor="let txn of transactions"
+          >
+            <td class="px-6 py-4 text-body text-dark-primary font-medium">
+              {{ txn.id }}
+            </td>
+            <td class="px-6 py-4 text-body text-dark-primary font-medium">
+              {{ txn.amount | currency : "SAR" }}
+            </td>
+            <td class="px-6 py-4 text-body text-gray-600">{{ txn.pos }}</td>
+            <td class="px-6 py-4">
+              <app-status-badge [variant]="txn.statusVariant">
+                {{ txn.status }}
+              </app-status-badge>
+            </td>
+            <td class="px-6 py-4">
+              <app-status-badge [variant]="txn.typeVariant">
+                {{ txn.type }}
+              </app-status-badge>
+            </td>
+            <td class="px-6 py-4 text-body text-gray-600">
+              {{ txn.date }}
+            </td>
+            <td class="px-6 py-4">
+              <button
+                class="p-2 hover:bg-light-bg rounded-lg transition-colors"
+              >
+                <svg
+                  class="w-4 h-4 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19l-7-7 7-7m0 0l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>

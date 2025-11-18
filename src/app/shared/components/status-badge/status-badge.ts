@@ -8,7 +8,8 @@ import { CommonModule } from "@angular/common";
   templateUrl: "./status-badge.html",
 })
 export class StatusBadgeComponent {
-  @Input() status: "online" | "offline" | "maintenance" | string = "offline";
+  @Input() status?: "online" | "offline" | "maintenance" | string = "offline";
+  @Input() variant?: "success" | "error" | "warning" | "info" | string = "info";
 
   get statusClass(): string {
     const baseClasses =
@@ -21,7 +22,7 @@ export class StatusBadgeComponent {
     };
 
     return `${baseClasses} ${
-      statusClasses[this.status] || statusClasses["offline"]
+      statusClasses[this.status || "online"] || statusClasses["offline"]
     }`;
   }
 
@@ -32,6 +33,6 @@ export class StatusBadgeComponent {
       maintenance: "bg-warning",
     };
 
-    return dotClasses[this.status] || dotClasses["offline"];
+    return dotClasses[this.status || "bg-success"] || dotClasses["offline"];
   }
 }
