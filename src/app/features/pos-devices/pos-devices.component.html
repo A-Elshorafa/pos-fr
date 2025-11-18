@@ -1,1 +1,128 @@
-<p>pos-devices works!</p>
+<div class="space-y-8">
+  <!-- Page Header -->
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-h1 text-dark-primary font-bold">POS Devices</h1>
+      <p class="text-body text-gray-600 mt-2">
+        Manage and monitor your POS terminals
+      </p>
+    </div>
+    <button
+      class="h-11 px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary-hover transition-colors"
+    >
+      + Add POS Device
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="flex gap-4">
+    <input
+      type="text"
+      placeholder="Search devices..."
+      class="flex-1 h-11 px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white text-dark-primary"
+    />
+    <select
+      class="px-4 py-2 border border-border-input rounded-input focus:outline-none focus:ring-2 focus:ring-primary bg-white text-dark-primary"
+    >
+      <option>All Status</option>
+      <option>Online</option>
+      <option>Offline</option>
+    </select>
+  </div>
+
+  <!-- Devices Table -->
+  <app-card padding="md" shadow>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-border-gray bg-table-header">
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Device
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Serial Number
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Status
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Last Heartbeat
+            </th>
+            <th
+              class="px-6 py-4 text-left text-label font-semibold text-dark-primary"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="border-b border-border-gray hover:bg-table-even transition-colors"
+            *ngFor="let device of devices"
+          >
+            <td class="px-6 py-4 text-body text-dark-primary font-medium">
+              {{ device.name }}
+            </td>
+            <td class="px-6 py-4 text-body text-gray-600">
+              {{ device.serial }}
+            </td>
+            <td class="px-6 py-4">
+              <app-status-badge [status]="device.status">
+                {{ device.statusLabel }}
+              </app-status-badge>
+            </td>
+            <td class="px-6 py-4 text-body text-gray-600">
+              {{ device.lastHeartbeat }}
+            </td>
+            <td class="px-6 py-4">
+              <div class="flex gap-2">
+                <button
+                  class="p-2 hover:bg-light-bg rounded-lg transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="p-2 hover:bg-light-bg rounded-lg transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19l-7-7 7-7m0 0l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
